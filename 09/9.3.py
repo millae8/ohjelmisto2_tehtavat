@@ -14,9 +14,9 @@ class Auto:
     def kiihdytä(self, muutos):
         self.nopeus = self.nopeus + muutos
         if self.nopeus <= 0:
-            print(f'Auton nopeus on tällä hetkellä {self.nopeus} km/h, auto on pysähtynyt.')
+            self.nopeus = 0
         if self.nopeus >= self.huippunopeus:
-            print('Huippunopeus ylitetty, ei mahdollinen.')
+            self.nopeus = self.huippunopeus
         return
 
     def kulje(self, tunti):
