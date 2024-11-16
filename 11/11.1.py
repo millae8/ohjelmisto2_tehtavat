@@ -1,4 +1,4 @@
-# tehtävä 1
+# moduuli 11, tehtävä 1
 
 class Julkaisu:
     def __init__(self, nimi):
