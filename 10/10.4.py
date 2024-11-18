@@ -1,8 +1,6 @@
 # moduuli 10 tehtävä 4
 import random
 
-autot = []
-
 class Auto:
 
     def __init__(self, rekisteritunnus, huippunopeus, nopeus = 0, matka = 0):
@@ -27,18 +25,35 @@ class Auto:
         self.matka = self.matka + self.nopeus * tunti
         return
 
+#--------------------------------------------------------10.4-------------------------------------------------------
+class Kilpailu:
+    def __init__(self, nimi, pituus):
+        self.nimi = nimi
+        self.pituus = pituus
+        self.autot = []
+
+    def tunti_kuluu(self):
+        for auto in self.autot:
+            auto.kiihdytä(random.randint(-10, 15))
+            auto.kulje(1)
+
+    def tulosta_tilanne(self):
+        for each in self.autot:
+            each.print_info()
+
+    def kilpailu_ohi(self):
+        for auto in self.autot:
+            if auto.matka >= 8000:
+                print("Kilpailu on ohi.")
+                return True
+        return False
+
+kilpailu = Kilpailu("Suuri romuralli", 8000)
+
 for i in range(1, 11):
     auto = Auto(f'ABC-{i}', random.randint(100, 200))
-    autot.append(auto)
+    kilpailu.autot.append(auto)
 
-race = True
-
-while race:
-    for auto in autot:
-        auto.kiihdytä(random.randint(-10, 15))
-        auto.kulje(1)
-        if auto.matka >= 10000:
-            race = False
-
-for each in autot:
-    each.print_info()
+while kilpailu.kilpailu_ohi() == False:
+    kilpailu.tunti_kuluu()
+    kilpailu.tulosta_tilanne()
