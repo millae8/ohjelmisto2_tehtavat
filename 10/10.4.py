@@ -57,3 +57,5 @@ for i in range(1, 11):
 while kilpailu.kilpailu_ohi() == False:
     kilpailu.tunti_kuluu()
     kilpailu.tulosta_tilanne()
+
+kilpailu.tulosta_tilanne()
