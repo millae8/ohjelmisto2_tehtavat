@@ -1,5 +1,4 @@
-# moduuli 10 tehtävä 4
-import random
+#moduuli 11, tehtävä 2
 
 autot = []
 
@@ -26,19 +25,22 @@ class Auto:
     def kulje(self, tunti):
         self.matka = self.matka + self.nopeus * tunti
         return
+#--------------------------------------------------11.2---------------------------------------------------------
+class Sähköauto(Auto):
+    def __init__(self, rekisteritunnus, huippunopeus, akkukapasiteetti, nopeus):
+        self.akkukapasiteetti = akkukapasiteetti
+        super().__init__(rekisteritunnus, huippunopeus, nopeus)
 
-for i in range(1, 11):
-    auto = Auto(f'ABC-{i}', random.randint(100, 200))
-    autot.append(auto)
+class Polttomoottoriauto(Auto):
+    def __init__(self, rekisteritunnus, huippunopeus, bensatankki, nopeus):
+        self.bensatankki = bensatankki
+        super().__init__(rekisteritunnus, huippunopeus, nopeus)
 
-race = True
+autot.append(Sähköauto("ABC-15", "180km/h", "52.5kWh", 69))
+autot.append(Polttomoottoriauto("ACD-123", "165km/h", "32.3l", 87))
 
-while race:
-    for auto in autot:
-        auto.kiihdytä(random.randint(-10, 15))
-        auto.kulje(1)
-        if auto.matka >= 10000:
-            race = False
+autot[0].kulje(3)
+autot[1].kulje(3)
 
 for each in autot:
     each.print_info()
